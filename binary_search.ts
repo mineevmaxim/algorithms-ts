@@ -1,6 +1,6 @@
 // Бинарный поиск
 
-const array: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+let array: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 let count: number = 0;
 
 const binarySearch = (array: number[], item: number): number => {
