@@ -27,3 +27,21 @@ const binarySearch = (array: number[], item: number): number => {
 
 	return position;
 }
+
+const recursiveBinarySearch = (
+	array: number[],
+	item: number,
+	start: number, 
+	end: 
+	number
+): number => {
+	let middle = Math.floor((start + end) / 2);
+	if (item === array[middle]) {
+		return middle;
+	}
+	if (item < array[middle]) {
+		return recursiveBinarySearch(array, item, start, middle - 1);
+	} else {
+		return recursiveBinarySearch(array, item, middle + 1, end);
+	}
+}
