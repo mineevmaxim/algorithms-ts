@@ -1,4 +1,3 @@
-"use strict";
 // Пузырьковая сортировка
 const bubbleSort = (array) => {
     for (let i = 0; i < array.length; i++) {
@@ -10,6 +9,7 @@ const bubbleSort = (array) => {
     }
     return array;
 };
+
 // Быстрая сортировка
 const quickSort = (array) => {
     if (array.length <= 1) {
@@ -32,6 +32,7 @@ const quickSort = (array) => {
     }
     return [...quickSort(less), pivot, ...quickSort(greater)];
 };
+
 // Сортировка выбором
 const selectionSort = (array) => {
     for (let i = 0; i < array.length; i++) {
@@ -45,12 +46,14 @@ const selectionSort = (array) => {
     }
     return array;
 };
+
 const getFunctionTime = (callback, array) => {
     const start = performance.now();
     callback(array);
     const end = performance.now();
     return end - start;
 };
+
 const generateRandomArray = (size) => {
     const array = [];
     for (let i = 0; i < size; i++) {
@@ -58,6 +61,11 @@ const generateRandomArray = (size) => {
     }
     return array;
 };
+
+const getAverage = (numbers) => {
+    return numbers.reduce((acc, number) => acc + number, 0) / numbers.length
+} 
+
 const sizes = [
     200,
     300,
@@ -76,16 +84,43 @@ const sizes = [
     700000,
     1000000,
 ];
+
+let times = 11;
+
+const bubbleSortTimes = []
+const quickSortTimes = []
+const selectionSortTimes = []
+
 const runTests = () => {
     sizes.forEach(size => {
-        const testArray = generateRandomArray(size);
-        const bubbleSortTime = getFunctionTime(bubbleSort, testArray);
-        const quickSortTime = getFunctionTime(quickSort, testArray);
-        const selectionSortTime = getFunctionTime(selectionSort, testArray);
-        console.log(`РАЗМЕР МАССИВА: ${size}`);
-        console.log(`Время работы bubbleSort: ${bubbleSortTime}`);
-        console.log(`Время работы quickSort: ${quickSortTime}`);
-        console.log(`Время работы selectionSort: ${selectionSortTime}`);
-        console.log('\n');
+        console.log(`Array size: ${size}`);
+        const bubbleSortResults = [];
+        const quickSortResults = [];
+        const selectionSortResults = [];
+        for (let i = 0; i < times; i++) {
+            const testArray = generateRandomArray(size);
+            const bubbleSortTime = getFunctionTime(bubbleSort, testArray);
+            const quickSortTime = getFunctionTime(quickSort, testArray);
+            const selectionSortTime = getFunctionTime(selectionSort, testArray);
+            bubbleSortResults.push(bubbleSortTime);
+            quickSortResults.push(quickSortTime);
+            selectionSortResults.push(selectionSortTime);
+        }
+        if (times > 1) {
+            times -= 2;
+        }
+        bubbleSortTimes.push(getAverage(bubbleSortResults));
+        quickSortTimes.push(getAverage(quickSortResults));
+        selectionSortTimes.push(getAverage(selectionSortResults));
     });
 };
+
+runTests();
+console.log(bubbleSortTimes);
+console.log(quickSortTimes);
+console.log(selectionSortTimes);
+
+console.log('SIZE - BUBBLE - QUICK - SELECTION')
+for (let i = 0; i < sizes.length; i++) {
+    console.log(`${sizes[i]} - ${bubbleSortTimes[i]} - ${quickSortTimes[i]} - ${selectionSortTimes[i]}`)
+}

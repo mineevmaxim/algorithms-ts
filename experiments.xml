@@ -1,0 +1,110 @@
+<experiments>
+	<BubbleSort>
+		<experiment Length="200" Counts="10">
+		</experiment>
+		<experiment Length="300" Counts="9">
+		</experiment>
+		<experiment Length="400" Counts="8">
+		</experiment>
+		<experiment Length="700" Counts="7">
+		</experiment>
+		<experiment Length="1000" Counts="6">
+		</experiment>
+		<experiment Length="2000" Counts="5">
+		</experiment>
+		<experiment Length="4000" Counts="4">
+		</experiment>
+		<experiment Length="7000" Counts="3">
+		</experiment>
+		<experiment Length="10000" Counts="2">
+		</experiment>
+		<experiment Length="20000" Counts="1">
+		</experiment>
+		<experiment Length="40000" Counts="1">
+		</experiment>
+		<experiment Length="70000" Counts="1">
+		</experiment>
+		<experiment Length="100000" Counts="1">
+		</experiment>
+		<experiment Length="200000" Counts="1">
+		</experiment>
+		<experiment Length="400000" Counts="1">
+		</experiment>
+		<experiment Length="700000" Counts="1">
+		</experiment>
+		<experiment Length="1000000" Counts="1">
+		</experiment>
+	</BubbleSort>
+	<QuickSort>
+		<experiment Length="200" Counts="10">
+		</experiment>
+		<experiment Length="300" Counts="9">
+		</experiment>
+		<experiment Length="400" Counts="8">
+		</experiment>
+		<experiment Length="700" Counts="7">
+		</experiment>
+		<experiment Length="1000" Counts="6">
+		</experiment>
+		<experiment Length="2000" Counts="5">
+		</experiment>
+		<experiment Length="4000" Counts="4">
+		</experiment>
+		<experiment Length="7000" Counts="3">
+		</experiment>
+		<experiment Length="10000" Counts="2">
+		</experiment>
+		<experiment Length="20000" Counts="1">
+		</experiment>
+		<experiment Length="40000" Counts="1">
+		</experiment>
+		<experiment Length="70000" Counts="1">
+		</experiment>
+		<experiment Length="100000" Counts="1">
+		</experiment>
+		<experiment Length="200000" Counts="1">
+		</experiment>
+		<experiment Length="400000" Counts="1">
+		</experiment>
+		<experiment Length="700000" Counts="1">
+		</experiment>
+		<experiment Length="1000000" Counts="1">
+		</experiment>
+	</QuickSort>
+	<SelectionSort>
+		<experiment Length="200" Counts="10">
+		</experiment>
+		<experiment Length="300" Counts="9">
+		</experiment>
+		<experiment Length="400" Counts="8">
+		</experiment>
+		<experiment Length="700" Counts="7">
+		</experiment>
+		<experiment Length="1000" Counts="6">
+		</experiment>
+		<experiment Length="2000" Counts="5">
+		</experiment>
+		<experiment Length="4000" Counts="4">
+		</experiment>
+		<experiment Length="7000" Counts="3">
+		</experiment>
+		<experiment Length="10000" Counts="2">
+		</experiment>
+		<experiment Length="20000" Counts="1">
+		</experiment>
+		<experiment Length="40000" Counts="1">
+		</experiment>
+		<experiment Length="70000" Counts="1">
+		</experiment>
+		<experiment Length="100000" Counts="1">
+		</experiment>
+		<experiment Length="200000" Counts="1">
+		</experiment>
+		<experiment Length="400000" Counts="1">
+		</experiment>
+		<experiment Length="700000" Counts="1">
+		</experiment>
+		<experiment Length="1000000" Counts="1">
+		</experiment>
+	</SelectionSort>
+</experiments>
