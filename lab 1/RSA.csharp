@@ -1,0 +1,140 @@
+using System;
+using System.Numerics;
+
+public class BigInteger
+{
+    public byte[] number;
+
+    public BigInteger(byte[] value)
+    {
+        number = value;
+    }
+
+    public static BigInteger operator +(BigInteger number1, BigInteger number2) 
+    {
+        return number1.number.Zip(number2.number, (a, b) => (byte)(a + b)).ToArray();
+    }
+    
+    public static BigInteger operator -(BigInteger number1, BigInteger number2) 
+    {
+        return number1.number.Zip(number2.number, (a, b) => (byte)(a - b)).ToArray();
+    }
+    
+    public static BigInteger operator *(BigInteger number1, BigInteger number2) 
+    {
+        return number1.number.Zip(number2.number, (a, b) => (byte)(a * b)).ToArray();
+    }
+    
+    public static BigInteger operator /(BigInteger number1, BigInteger number2) 
+    {
+        return number1.number.Zip(number2.number, (a, b) => (byte)(a / b)).ToArray();
+    }
+    
+    public static BigInteger operator %(BigInteger number1, BigInteger number2) 
+    {
+        return number1.number.Zip(number2.number, (a, b) => (byte)(a % b)).ToArray();
+    }
+    
+    public static bool operator ==(BigInteger number1, BigInteger number2) 
+    {
+        return number1.number.SequenceEqual(number2.number);
+    }
+    
+    public static bool operator !=(BigInteger number1, BigInteger number2) 
+    {
+        return !number1.number.SequenceEqual(number2.number);
+    }
+    
+    public static bool operator >(BigInteger number1, BigInteger number2) 
+    {
+        for (int i = 0; i < number1.number.Length; i++)
+        {
+            if (number1.number[i] > number2.number[i]) return true;
+            if (number1.number[i] < number2.number[i]) return false;
+        }
+        return false;
+    }
+    
+    public static bool operator <(BigInteger number1, BigInteger number2) 
+    {
+        for (int i = 0; i < number1.number.Length; i++)
+        {
+            if (number1.number[i] < number2.number[i]) return true;
+            if (number1.number[i] > number2.number[i]) return false;
+        }
+        return false;
+    }
+    
+    public static BigInteger ModInverse(BigInteger a, BigInteger n)
+    {
+        BigInteger i = n, v = 0, d = 1;
+        while (a > 0)
+        {
+            BigInteger t = i / a, x = a;
+            a = i % x;
+            i = x;
+            x = d;
+            d = v - t * x;
+            v = x;
+        }
+        v %= n;
+        if (v < 0)
+        {
+            v = (v + n) % n;
+        }
+        return v;
+    }
+}
+
+public class RSA
+{
+    private BigInteger p; // Простое число p
+    private BigInteger q; // Простое число q
+    private BigInteger n; // Произведение p и q
+    private BigInteger e; // Открытая экспонента e
+    private BigInteger d; // Закрытая экспонента d
+
+    public RSA(BigInteger p, BigInteger q, BigInteger e)
+    {
+        this.p = p;
+        this.q = q;
+        this.n = BigInteger.Multiply(p, q);
+        this.e = e;
+        this.d = CalculateD();
+    }
+
+    public BigInteger Encrypt(BigInteger message)
+    {
+        return BigInteger.ModPow(message, e, n);
+    }
+
+    public BigInteger Decrypt(BigInteger cipher)
+    {
+        return BigInteger.ModPow(cipher, d, n);
+    }
+    
+    private BigInteger CalculateD()
+    {
+        BigInteger phi = BigInteger.Multiply(p - 1, q - 1);
+        return ModInverse(e, phi);
+    }
+
+    public BigInteger Encrypt(BigInteger message)
+    {
+        return BigInteger.ModPow(message, e, n);
+    }
+
+    public BigInteger Decrypt(BigInteger cipher)
+    {
+        return BigInteger.ModPow(cipher, d, n);
+    }
+}
+
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine ("Try programiz.pro");
+    }
+}
